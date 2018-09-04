@@ -1,5 +1,6 @@
+import CircularProgress from '@material-ui/core/CircularProgress';
 import * as React from 'react';
-import Loader from 'react-loader-spinner'
+import { Link } from 'react-router-dom';
 import './App.css';
 import './css/styles.css';
 
@@ -56,16 +57,19 @@ export default class App extends React.Component<{}, IState> {
           <p>Type in a movie title in the search bar below to view information about the movie.</p>
           <form onSubmit={this.handleSubmit}>
             <label>
-              <input type="text" value={this.state.value} onChange={this.handleChange} />
+              <input type="text" value={this.state.value} onChange={this.handleChange} className='input' />
             </label>
             <input type="submit" value="Submit" className='submitButton'/>
+            <div id='advanced-link'>
+              <Link to='/FirstComponent'>Advanced Search</Link>
+            </div>
           </form>
           <div> 
           {
             this.state.title === "" ? 
             (this.state.value.length !== 0 ?
             <div className='loader'>
-              <Loader type="TailSpin" color="#00BFFF" height={80} width={80}/>
+              <CircularProgress thickness={3} />
             </div> :
             <br/>) :
             <div className='results-box'>

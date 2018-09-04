@@ -12,6 +12,9 @@ export const Header: React.StatelessComponent<{}> = () => {
                 </Navbar.Brand>
             </Navbar.Header>
             <Nav>
+            <IndexLinkContainer to="/AdvancedSearchComponent">
+                    <NavItem>Advanced Search</NavItem>
+                </IndexLinkContainer>
                 <IndexLinkContainer to="/FirstComponent">
                     <NavItem>Extra Information</NavItem>
                 </IndexLinkContainer>

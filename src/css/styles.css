@@ -6,9 +6,11 @@ h1 {
     font-size: 30px;
 }
 
-.submitButton{
-    margin-bottom: 10px;
-    margin-left: 5px;
+.submitButton, .input{
+    margin-right: 5px;
+}
+#advanced-link {
+    margin-bottom: 20px;
 }
 img {
     max-width: 200px;
