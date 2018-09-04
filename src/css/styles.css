@@ -3,5 +3,31 @@
 }
 
 h1 {
-    font-size: 150px;
+    font-size: 30px;
+}
+
+.submitButton{
+    margin-bottom: 10px;
+    margin-left: 5px;
+}
+img {
+    max-width: 200px;
+    float: left;
+    padding-right: 10px;
+    padding-left: 10px;
+    padding-bottom: 10px;
+}
+.results {
+    text-align: left;
+    word-wrap: break-word;
+}
+.results-box {
+    margin: auto;
+    padding-top: 10px;
+    width: 1000px;
+    border-style: solid;
+    overflow: hidden;
+}
+.loader {
+    margin-top: 30px;
 }
