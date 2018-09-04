@@ -6,6 +6,10 @@ h1 {
     font-size: 30px;
 }
 
+input {
+    input: focus;
+    border-radius: 3px;
+}
 .submitButton, .input{
     margin-right: 5px;
 }
@@ -32,4 +36,19 @@ img {
 }
 .loader {
     margin-top: 30px;
+}
+.warning {
+    margin-left: auto;
+    margin-right: auto;
+    width: 350px;
+    text-align: justify;
+    margin-bottom: 5px;
+    margin-top: 5px;
+    font-size: 10px;
+}
+.error {
+    margin-top: 30px;
+}
+desc {
+    margin-bottom: 5px;
 }

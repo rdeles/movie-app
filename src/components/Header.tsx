@@ -1,9 +1,24 @@
+import {AppBar, Toolbar, Typography} from '@material-ui/core/';
+// import MenuIcon from '@material-ui/icons/Menu';
 import * as React from 'react';
-import { Nav, Navbar, NavItem } from 'react-bootstrap';
-import { IndexLinkContainer } from "react-router-bootstrap";
+// import { Nav, Navbar, NavItem } from 'react-bootstrap';
+// import { IndexLinkContainer } from "react-router-bootstrap";
 import { Link } from 'react-router-dom';
 
 export const Header: React.StatelessComponent<{}> = () => {
+    return (
+            <AppBar position="static">
+                <Toolbar>
+                    <Typography variant="display2" color="inherit">
+                        <Link style={{color: "white"}} to="/">This Random Movie Thing</Link>
+                        <Link to="/FirstComponent"> Advanced Search </Link>
+                    </Typography>
+                </Toolbar>
+            </AppBar>
+    );
+}
+
+/*export const Header: React.StatelessComponent<{}> = () => {
     return (
         <Navbar>
             <Navbar.Header>
@@ -12,13 +27,10 @@ export const Header: React.StatelessComponent<{}> = () => {
                 </Navbar.Brand>
             </Navbar.Header>
             <Nav>
-            <IndexLinkContainer to="/AdvancedSearchComponent">
-                    <NavItem>Advanced Search</NavItem>
-                </IndexLinkContainer>
                 <IndexLinkContainer to="/FirstComponent">
-                    <NavItem>Extra Information</NavItem>
+                    <NavItem>Advanced Search</NavItem>
                 </IndexLinkContainer>
             </Nav>
         </Navbar>
     );
-}
+}*/

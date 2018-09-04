@@ -1,5 +1,6 @@
 import CircularProgress from '@material-ui/core/CircularProgress';
 import * as React from 'react';
+import { Link } from 'react-router-dom';
 import './App.css';
 import './css/styles.css';
 
@@ -9,7 +10,8 @@ interface IState {
   year: any,
   genre: any,
   plot: any,
-  image: any
+  image: any,
+  response: any
 }
 
 export default class App extends React.Component<{}, IState> {
@@ -19,6 +21,7 @@ export default class App extends React.Component<{}, IState> {
       genre: '',
       image: '',
       plot: '',
+      response: '',
       title: '',
       value: '',
       year: ''      
@@ -42,6 +45,7 @@ export default class App extends React.Component<{}, IState> {
         genre: data.Genre,
         image: data.Poster,
         plot: data.Plot,
+        response: data.Response,
         title: data.Title,
         year: data.Released        
       })
@@ -53,21 +57,25 @@ export default class App extends React.Component<{}, IState> {
     return (
       <div className="container-fluid">
         <div className="centreText">
-          <p>Type in a movie title in the search bar below to view information about the movie.</p>
+          <p className='desc'>Type in a movie title in the search bar below to view information about the movie.</p>
           <form onSubmit={this.handleSubmit}>
             <label>
               <input type="text" value={this.state.value} onChange={this.handleChange} className='input' />
             </label>
-            <input type="submit" value="Submit" className='submitButton'/>
+            <input type="submit" value="Submit" className='submitButton'/><br/>
+            <Link to='/FirstComponent'>Advanced Search</Link>
+            <p className='warning'>Note: movies with the same title will yield only one of the movies, for a specific movie,
+            you may wish to use the advanced search.</p>
           </form>
           <div> 
           {
             this.state.title === "" ? 
-            (this.state.value.length !== 0 ?
+            (this.state.value.length > 0 ?
             <div className='loader'>
               <CircularProgress thickness={3} />
             </div> :
             <br/>) :
+            (this.state.response === "True" ?
             <div className='results-box'>
               <img src={this.state.image}/>
               <div className='results'>
@@ -76,11 +84,12 @@ export default class App extends React.Component<{}, IState> {
                 Genre: {this.state.genre}<br/>
                 Plot: {this.state.plot}</p>
               </div>
-            </div>
+            </div> :
+            <p className='error'>There were no movies in the data that matched your search.</p>)
           }
           </div>
         </div>
-    </div>
-    );
+      </div>
+    )
   }
 }

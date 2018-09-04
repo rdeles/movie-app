@@ -8,7 +8,8 @@ interface IState {
         year: any,
         genre: any,
         plot: any,
-        image: any
+        image: any,
+        response: any
       }
 
 export default class FirstComponent extends React.Component<{}, IState> {
@@ -19,6 +20,7 @@ export default class FirstComponent extends React.Component<{}, IState> {
                 genre: '',
                 image: '',
                 plot: '',
+                response: '',
                 title: '',
                 titleValue: '',
                 year: '',
@@ -48,6 +50,7 @@ export default class FirstComponent extends React.Component<{}, IState> {
                         genre: data.Genre,
                         image: data.Poster,
                         plot: data.Plot,
+                        response: data.Response,
                         title: data.Title,
                         year: data.Released        
                 })
@@ -59,7 +62,7 @@ export default class FirstComponent extends React.Component<{}, IState> {
                 return (
                         <div className="container-fluid">
         <div className="centreText">
-          <p>Type in a movie title in the search bar below to view information about the movie.</p>
+          <p>Type in a movie title and it's year of release in the search bar below to view information about the movie.</p>
           <form onSubmit={this.handleSubmit}>
             <label>
               <input type="text" value={this.state.titleValue} onChange={this.handleChange1} className='input' />
@@ -68,15 +71,17 @@ export default class FirstComponent extends React.Component<{}, IState> {
               <input type="text" value={this.state.yearValue} onChange={this.handleChange2} className='input' />
             </label>
             <input type="submit" value="Submit" className='submitButton'/>
+            <p className='warning'>Note: Putting no title and putting in a year will yield only one movie released in that year.</p>
           </form>
           <div> 
           {
             this.state.title === "" ? 
-            (this.state.titleValue.length !== 0 ?
+            (this.state.titleValue.length > 0 || this.state.yearValue.length > 0 ?
             <div className='loader'>
               <CircularProgress thickness={3} />
             </div> :
             <br/>) :
+            (this.state.response === "True" ?
             <div className='results-box'>
               <img src={this.state.image}/>
               <div className='results'>
@@ -85,7 +90,8 @@ export default class FirstComponent extends React.Component<{}, IState> {
                 Genre: {this.state.genre}<br/>
                 Plot: {this.state.plot}</p>
               </div>
-            </div>
+            </div> :
+            <p className='error'>There were no movies in the data that matched your search.</p>)
           }
           </div>
         </div>
