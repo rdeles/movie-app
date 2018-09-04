@@ -1,6 +1,5 @@
 import CircularProgress from '@material-ui/core/CircularProgress';
 import * as React from 'react';
-import { Link } from 'react-router-dom';
 import './App.css';
 import './css/styles.css';
 
@@ -44,7 +43,7 @@ export default class App extends React.Component<{}, IState> {
         image: data.Poster,
         plot: data.Plot,
         title: data.Title,
-        year: data.Year        
+        year: data.Released        
       })
     })
     event.preventDefault();
@@ -60,9 +59,6 @@ export default class App extends React.Component<{}, IState> {
               <input type="text" value={this.state.value} onChange={this.handleChange} className='input' />
             </label>
             <input type="submit" value="Submit" className='submitButton'/>
-            <div id='advanced-link'>
-              <Link to='/FirstComponent'>Advanced Search</Link>
-            </div>
           </form>
           <div> 
           {
