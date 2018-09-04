@@ -15,9 +15,6 @@ export const Header: React.StatelessComponent<{}> = () => {
                 <IndexLinkContainer to="/FirstComponent">
                     <NavItem>Page 1</NavItem>
                 </IndexLinkContainer>
-                <IndexLinkContainer to="/SecondComponent">
-                    <NavItem>Page 2</NavItem>
-                </IndexLinkContainer>
             </Nav>
         </Navbar>
     );
