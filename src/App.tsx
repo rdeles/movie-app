@@ -68,11 +68,11 @@ export default class App extends React.Component<{}, IState> {
           <p className='desc'>Type in a movie title in the search bar below to view information about the movie.</p>
           <form onSubmit={this.handleSubmit}>
             <label>
-              <input type="text" value={this.state.value} onChange={this.handleChange} className='input' />
+              <input type="text" value={this.state.value} onChange={this.handleChange} className='input' placeholder='Enter title'/>
             </label>
             <input type="submit" value="Submit" className='submitButton'/><br/>
             <Link to='/FirstComponent'>Advanced Search</Link>
-            <p className='warning'>Note: movies with the same title will yield only one of the movies, for a specific movie,
+            <p className='warning'>Note: Incomplete titles will return movies containing the substring in the title. Movies with the same title, or substring in the case of partial titles, will yield only one of the movies, for a specific movie,
             you may wish to use the advanced search.</p>
           </form>
           <div> 
@@ -80,7 +80,7 @@ export default class App extends React.Component<{}, IState> {
             this.state.title === "" ? 
             (this.state.value.length > 0 ?
             <div className='loader'>
-              <CircularProgress thickness={3} />
+              <CircularProgress thickness={5} size={50} />
             </div> :
             <br/>) :
             (this.state.response === "True" ?
@@ -91,7 +91,7 @@ export default class App extends React.Component<{}, IState> {
                 <b>Released in:</b> {this.state.year}<br/>
                 <b>Genre:</b> {this.state.genre}<br/>
                 <b>Directed by:</b> {this.state.director}<br/>
-                <b>Starring:</b> {this.state.actor}<br/>
+                <b>Starring:</b> {this.state.actor}<br/><br/>
                 <b>Plot:</b> {this.state.plot}</p>
               </div>
             </div> :

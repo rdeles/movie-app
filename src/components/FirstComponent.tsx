@@ -2,6 +2,8 @@ import CircularProgress from '@material-ui/core/CircularProgress';
 import * as React from "react";
 
 interface IState {
+        actor: any,
+        director: any,
         titleValue: string,
         yearValue: string,
         title: any,
@@ -17,6 +19,8 @@ export default class FirstComponent extends React.Component<{}, IState> {
                 super(props);
 
                 this.state = {
+                        actor: '',
+                        director: '',
                         genre: '',
                         image: '',
                         plot: '',
@@ -47,6 +51,8 @@ export default class FirstComponent extends React.Component<{}, IState> {
                                 return results.json();
                         }).then(data => {
                                 main.setState({
+                                        actor: data.Actors,
+                                        director: data.Director,
                                         genre: data.Genre,
                                         image: data.Poster,
                                         plot: data.Plot,
@@ -65,10 +71,10 @@ export default class FirstComponent extends React.Component<{}, IState> {
                                         <p className='desc'>Type in a movie title and it's year of release in the search bar below to view information about the movie.</p>
                                         <form onSubmit={this.handleSubmit}>
                                                 <label>
-                                                        <input type="text" value={this.state.titleValue} onChange={this.handleChange1} className='input' />
+                                                        <input type="text" value={this.state.titleValue} onChange={this.handleChange1} className='input' placeholder='Enter title'/>
                                                 </label>
                                                 <label>
-                                                        <input type="text" value={this.state.yearValue} onChange={this.handleChange2} className='input' />
+                                                        <input type="text" value={this.state.yearValue} onChange={this.handleChange2} className='input' placeholder='Enter year'/>
                                                 </label>
                                                 <input type="submit" value="Submit" className='submitButton' />
                                                 <p className='warning'>Note: Putting no title and putting in a year will yield only one movie released in that year.</p>
@@ -78,17 +84,19 @@ export default class FirstComponent extends React.Component<{}, IState> {
                                                         this.state.title === "" ?
                                                                 (this.state.titleValue.length > 0 || this.state.yearValue.length > 0 ?
                                                                         <div className='loader'>
-                                                                                <CircularProgress thickness={3} />
+                                                                                <CircularProgress thickness={5} size={50} />
                                                                         </div> :
                                                                         <br />) :
                                                                 (this.state.response === "True" ?
                                                                         <div className='results-box'>
                                                                                 <img src={this.state.image} />
                                                                                 <div className='results'>
-                                                                                        <p>Title: {this.state.title}<br />
-                                                                                                Released in: {this.state.year}<br />
-                                                                                                Genre: {this.state.genre}<br />
-                                                                                                Plot: {this.state.plot}</p>
+                                                                                        <p><b>Title:</b> {this.state.title}<br/>
+                                                                                        <b>Released in:</b> {this.state.year}<br/>
+                                                                                        <b>Genre:</b> {this.state.genre}<br/>
+                                                                                        <b>Directed by:</b> {this.state.director}<br/>
+                                                                                        <b>Starring:</b> {this.state.actor}<br/><br/>
+                                                                                        <b>Plot:</b> {this.state.plot}</p>
                                                                                 </div>
                                                                         </div> :
                                                                         <p className='error'>There were no movies in the data that matched your search.</p>)
