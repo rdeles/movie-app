@@ -1,8 +1,10 @@
 import CircularProgress from '@material-ui/core/CircularProgress';
 import * as React from 'react';
 import { Link } from 'react-router-dom';
+import 'typeface-roboto';
 import './App.css';
 import './css/styles.css';
+
 
 interface IState {
   value: string,

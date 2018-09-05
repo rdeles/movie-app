@@ -49,6 +49,10 @@ img {
 .error {
     margin-top: 30px;
 }
-desc {
+.desc {
     margin-bottom: 5px;
+    padding-top: 15px;
+}
+.container-fluid {
+    font: 'Roboto'
 }

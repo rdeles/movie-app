@@ -11,6 +11,9 @@ export const Header: React.StatelessComponent<{}> = () => {
                 <Toolbar>
                     <Typography variant="display2" color="inherit">
                         <Link style={{color: "white"}} to="/">This Random Movie Thing</Link>
+                    </Typography>
+                    <Typography color="primary">space</Typography>
+                    <Typography variant="display1" color="inherit">
                         <Link to="/FirstComponent"> Advanced Search </Link>
                     </Typography>
                 </Toolbar>
