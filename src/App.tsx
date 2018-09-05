@@ -7,19 +7,23 @@ import './css/styles.css';
 
 
 interface IState {
+  actor: any,
   value: string,
   title: any,
   year: any,
   genre: any,
   plot: any,
   image: any,
-  response: any
+  response: any,
+  director: any,
 }
 
 export default class App extends React.Component<{}, IState> {
   constructor(props: any) {
     super(props);
     this.state = {
+      actor: '',
+      director: '',
       genre: '',
       image: '',
       plot: '',
@@ -44,6 +48,8 @@ export default class App extends React.Component<{}, IState> {
       return results.json();
     }).then(data => {
       main.setState({
+        actor: data.Actors,
+        director: data.Director,
         genre: data.Genre,
         image: data.Poster,
         plot: data.Plot,
@@ -81,10 +87,12 @@ export default class App extends React.Component<{}, IState> {
             <div className='results-box'>
               <img src={this.state.image}/>
               <div className='results'>
-                <p>Title: {this.state.title}<br/>
-                Released in: {this.state.year}<br/>
-                Genre: {this.state.genre}<br/>
-                Plot: {this.state.plot}</p>
+                <p><b>Title:</b> {this.state.title}<br/>
+                <b>Released in:</b> {this.state.year}<br/>
+                <b>Genre:</b> {this.state.genre}<br/>
+                <b>Directed by:</b> {this.state.director}<br/>
+                <b>Starring:</b> {this.state.actor}<br/>
+                <b>Plot:</b> {this.state.plot}</p>
               </div>
             </div> :
             <p className='error'>There were no movies in the data that matched your search.</p>)
