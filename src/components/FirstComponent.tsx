@@ -5,7 +5,7 @@ interface IState {
         actor: any,
         director: any,
         titleValue: string,
-        yearValue: string,
+        yearValue: any,
         title: any,
         year: any,
         genre: any,
@@ -41,7 +41,7 @@ export default class FirstComponent extends React.Component<{}, IState> {
         }
 
         public handleChange2(event: any) {
-                this.setState({ yearValue: event.target.value });
+                this.setState({ yearValue: event.target.value});
         }
 
         public handleSubmit(event: any) {
@@ -77,7 +77,8 @@ export default class FirstComponent extends React.Component<{}, IState> {
                                                         <input type="text" value={this.state.yearValue} onChange={this.handleChange2} className='input' placeholder='Search year'/>
                                                 </label>
                                                 <input type="submit" value="Search" className='submitButton' />
-                                                <p className='warning-2'>Note: Putting no title and putting in a year will yield only one movie released in that year.</p>
+                                                <p className='warning'>Note: Leaving title blank and putting in a year will not bring up any results. 
+                                                Only enter numbers into the search for year in order to get the most accurate results.</p>
                                         </form>
                                         <hr className='split'/>
                                         <div>
@@ -90,9 +91,13 @@ export default class FirstComponent extends React.Component<{}, IState> {
                                                                         <br />) :
                                                                 (this.state.response === "True" ?
                                                                         <div className='results-box'>
-                                                                                <img src={this.state.image} />
+                                                                                {
+                                                                                        this.state.image === "N/A" ?
+                                                                                        <p>No poster available.</p> :
+                                                                                        <img src={this.state.image}/>
+                                                                                }
                                                                                 <div className='results'>
-                                                                                        <p><b>Title:</b> {this.state.title}<br/>
+                                                                                        <p className='info'><b>Title:</b> {this.state.title}<br/>
                                                                                         <b>Released in:</b> {this.state.year}<br/>
                                                                                         <b>Genre:</b> {this.state.genre}<br/>
                                                                                         <b>Directed by:</b> {this.state.director}<br/>

@@ -67,8 +67,8 @@ export default class App extends React.Component<{}, IState> {
             </label>
             <input type="submit" value="Search" className='submitButton'/><br/>
             <Link to='/FirstComponent'>Advanced Search</Link>
-            <p className='warning'>Note: Incomplete titles will return movies containing the substring in the title. 
-            To see more information on a particular movie/tv series, use advanced search.</p> 
+            <p className='warning'>Note: Search will treat search terms as words and not substrings.
+            e.g. searching 'avenge' will bring up the movie 'Avenger the Crows' but not 'The Avengers'.</p> 
           </form>
           <hr className='split'/>
           <div> 
@@ -77,16 +77,20 @@ export default class App extends React.Component<{}, IState> {
             <div className='loader'>
               <CircularProgress thickness={5} size={50} />
             </div> :
-            (this.state.array === [] ?
+            (this.state.response === 'False' ?
             <p className='error'>There were no movies in the data that matched your search.</p> :
             <div>
             {
               this.state.array.map(
                 (data) => 
                 <div key={data.imdbID} className='results-box-1'>
-                  <img src={data.Poster}/>
+                  {
+                    data.Poster === "N/A" ?
+                    <p>No poster available.</p> :
+                    <img src={data.Poster}/>
+                  }
                   <div className='results'>
-                    <p><b>Title:</b> {data.Title}<br/>
+                    <p className='info'><b>Title:</b> {data.Title}<br/>
                     <b>Released in:</b> {data.Year}<br/></p>
                   </div>
                 </div>

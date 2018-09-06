@@ -2,9 +2,9 @@ import {AppBar, Button, Drawer, Toolbar, Typography} from '@material-ui/core/';
 import MenuIcon from '@material-ui/icons/Menu';
 import * as React from 'react';
 import { Link } from 'react-router-dom';
+import 'src/css/header-style.css';
 import img2 from 'src/logo.png';
 import img from 'src/title.png';
-import './header-style.css';
 
 export class Header extends React.Component <{}, {left: boolean}> {
     constructor(props: any) {
