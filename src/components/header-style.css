@@ -1,0 +1,20 @@
+.drawer-list {
+    width: 250px;
+    margin-top: 20px;
+    margin-left: 10px;
+    margin-right: 10px;
+}
+
+.top-img {
+    margin-top: 10px;
+}
+
+.side-img{
+    padding-left: 20px;
+}
+
+.about {
+    max-width: 600px;
+    text-align: justify;
+    margin: auto;
+}

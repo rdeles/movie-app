@@ -9,6 +9,7 @@ h1 {
 input {
     input: focus;
     border-radius: 3px;
+    padding-left: 3px;
 }
 .submitButton, .input{
     margin-right: 5px;
@@ -38,6 +39,16 @@ img {
     overflow: hidden;
     background-color: white;
 }
+.results-box-1{
+    margin: auto;
+    margin-top: 15px;
+    padding-top: 10px;
+    max-width: 40%;
+    border-style: solid;
+    border-width: 1px;
+    overflow: hidden;
+    background-color: white;
+}
 .loader {
     margin-top: 30px;
 }
@@ -50,6 +61,15 @@ img {
     margin-top: 5px;
     font-size: 11px;
 }
+
+.warning-2 {
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 5px;
+    margin-top: 5px;
+    font-size: 11px;
+}
+
 .error {
     margin-top: 30px;
     font-size: 15px;
@@ -58,10 +78,4 @@ img {
 .desc {
     margin-bottom: 5px;
     padding-top: 15px;
-}
-.container-fluid {
-    font-family: 'Courier New';
-}
-Typography {
-    font-family: 'Courier New';
 }

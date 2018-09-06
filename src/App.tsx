@@ -16,6 +16,7 @@ interface IState {
   image: any,
   response: any,
   director: any,
+  array: any[]
 }
 
 export default class App extends React.Component<{}, IState> {
@@ -23,6 +24,7 @@ export default class App extends React.Component<{}, IState> {
     super(props);
     this.state = {
       actor: '',
+      array: [],
       director: '',
       genre: '',
       image: '',
@@ -43,11 +45,15 @@ export default class App extends React.Component<{}, IState> {
 
   public handleSubmit(event: any) {
     const main = this
-    fetch(`http://www.omdbapi.com/?apikey=e6baafca&t=${this.state.value}`)
+    fetch(`http://www.omdbapi.com/?apikey=e6baafca&s=${this.state.value}`)
     .then(results => {
       return results.json();
     }).then(data => {
       main.setState({
+        array: data.Search,
+        response: data.Response
+      })
+      /*main.setState({
         actor: data.Actors,
         director: data.Director,
         genre: data.Genre,
@@ -56,7 +62,7 @@ export default class App extends React.Component<{}, IState> {
         response: data.Response,
         title: data.Title,
         year: data.Released        
-      })
+      })*/
     })
     event.preventDefault();
   }
@@ -65,37 +71,39 @@ export default class App extends React.Component<{}, IState> {
     return (
       <div className="container-fluid">
         <div className="centreText">
-          <p className='desc'>Type in a movie title in the search bar below to view information about the movie.</p>
+          <p className='desc'>Type in the search bar below to view matching titles of movies/tv series.</p>
           <form onSubmit={this.handleSubmit}>
             <label>
-              <input type="text" value={this.state.value} onChange={this.handleChange} className='input' placeholder='Enter title'/>
+              <input type="text" value={this.state.value} onChange={this.handleChange} className='input' placeholder='Search'/>
             </label>
-            <input type="submit" value="Submit" className='submitButton'/><br/>
+            <input type="submit" value="Search" className='submitButton'/><br/>
             <Link to='/FirstComponent'>Advanced Search</Link>
-            <p className='warning'>Note: Incomplete titles will return movies containing the substring in the title. Movies with the same title, or substring in the case of partial titles, will yield only one of the movies, for a specific movie,
-            you may wish to use the advanced search.</p>
+            <p className='warning'>Note: Incomplete titles will return movies containing the substring in the title. 
+            To see more information on a particular movie/tv series, use advanced search.</p> 
           </form>
+          <hr className='split'/>
           <div> 
           {
-            this.state.title === "" ? 
-            (this.state.value.length > 0 ?
+            this.state.response === '' && this.state.value.length > 0 ?
             <div className='loader'>
               <CircularProgress thickness={5} size={50} />
             </div> :
-            <br/>) :
-            (this.state.response === "True" ?
-            <div className='results-box'>
-              <img src={this.state.image}/>
-              <div className='results'>
-                <p><b>Title:</b> {this.state.title}<br/>
-                <b>Released in:</b> {this.state.year}<br/>
-                <b>Genre:</b> {this.state.genre}<br/>
-                <b>Directed by:</b> {this.state.director}<br/>
-                <b>Starring:</b> {this.state.actor}<br/><br/>
-                <b>Plot:</b> {this.state.plot}</p>
-              </div>
-            </div> :
-            <p className='error'>There were no movies in the data that matched your search.</p>)
+            (this.state.array === [] ?
+            <p className='error'>There were no movies in the data that matched your search.</p> :
+            <div>
+            {
+              this.state.array.map(
+                (data) => 
+                <div key={data.imdbID} className='results-box-1'>
+                  <img src={data.Poster}/>
+                  <div className='results'>
+                    <p><b>Title:</b> {data.Title}<br/>
+                    <b>Released in:</b> {data.Year}<br/></p>
+                  </div>
+                </div>
+              )
+            }
+            </div>)
           }
           </div>
         </div>

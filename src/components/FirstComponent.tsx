@@ -71,14 +71,15 @@ export default class FirstComponent extends React.Component<{}, IState> {
                                         <p className='desc'>Type in a movie title and it's year of release in the search bar below to view information about the movie.</p>
                                         <form onSubmit={this.handleSubmit}>
                                                 <label>
-                                                        <input type="text" value={this.state.titleValue} onChange={this.handleChange1} className='input' placeholder='Enter title'/>
+                                                        <input type="text" value={this.state.titleValue} onChange={this.handleChange1} className='input' placeholder='Search title'/>
                                                 </label>
                                                 <label>
-                                                        <input type="text" value={this.state.yearValue} onChange={this.handleChange2} className='input' placeholder='Enter year'/>
+                                                        <input type="text" value={this.state.yearValue} onChange={this.handleChange2} className='input' placeholder='Search year'/>
                                                 </label>
-                                                <input type="submit" value="Submit" className='submitButton' />
-                                                <p className='warning'>Note: Putting no title and putting in a year will yield only one movie released in that year.</p>
+                                                <input type="submit" value="Search" className='submitButton' />
+                                                <p className='warning-2'>Note: Putting no title and putting in a year will yield only one movie released in that year.</p>
                                         </form>
+                                        <hr className='split'/>
                                         <div>
                                                 {
                                                         this.state.title === "" ?
