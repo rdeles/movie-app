@@ -5,7 +5,6 @@ import 'typeface-roboto';
 import './App.css';
 import './css/styles.css';
 
-
 interface IState {
   actor: any,
   value: string,
@@ -53,16 +52,6 @@ export default class App extends React.Component<{}, IState> {
         array: data.Search,
         response: data.Response
       })
-      /*main.setState({
-        actor: data.Actors,
-        director: data.Director,
-        genre: data.Genre,
-        image: data.Poster,
-        plot: data.Plot,
-        response: data.Response,
-        title: data.Title,
-        year: data.Released        
-      })*/
     })
     event.preventDefault();
   }
@@ -111,3 +100,8 @@ export default class App extends React.Component<{}, IState> {
     )
   }
 }
+
+// base project from workshop demo
+// some code adapted from:
+// https://blog.hellojs.org/fetching-api-data-with-react-js-460fe8bbf8f2
+// https://reactjs.org/docs/forms.html
