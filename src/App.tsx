@@ -67,6 +67,7 @@ export default class App extends React.Component<{}, IState> {
             </label>
             <input type="submit" value="Search" className='submitButton'/><br/>
             <Link to='/FirstComponent'>Advanced Search</Link>
+            <p className='warning-2'>If loader is persisting, <Link to='/Help'>click here for help</Link>.</p>
             <p className='warning'>Note: Search will treat search terms as words and not substrings.
             e.g. searching 'avenge' will bring up the movie 'Avenger the Crows' but not 'The Avengers'.</p> 
           </form>

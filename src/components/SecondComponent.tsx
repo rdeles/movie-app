@@ -1,4 +1,5 @@
 import * as React from "react";
+import { Link } from 'react-router-dom';
 
 export default class SecondComponent extends React.Component <{}> {
         
@@ -22,6 +23,8 @@ export default class SecondComponent extends React.Component <{}> {
                                 in the advanced search to bring up information about a particular movie/tv series.
                                 <br/><br/>
                                 When using the normal search, make the search terms as long as possible to return only the relevant results.
+                                <br/><br/>
+                                <Link to='/Help'>Click here for more help.</Link>
                             </p>
                             <hr/>
                         </div>

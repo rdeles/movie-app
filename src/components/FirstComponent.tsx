@@ -1,5 +1,7 @@
 import CircularProgress from '@material-ui/core/CircularProgress';
 import * as React from "react";
+import { Link } from 'react-router-dom';
+import 'typeface-roboto';
 
 interface IState {
         actor: any,
@@ -77,6 +79,7 @@ export default class FirstComponent extends React.Component<{}, IState> {
                                                         <input type="text" value={this.state.yearValue} onChange={this.handleChange2} className='input' placeholder='Search year'/>
                                                 </label>
                                                 <input type="submit" value="Search" className='submitButton' />
+                                                <p className='warning-2'>If loader is persisting, <Link to='/Help'>click here for help</Link>.</p>
                                                 <p className='warning'>Note: Leaving title blank and putting in a year will not bring up any results. 
                                                 Only enter numbers into the search for year in order to get the most accurate results.</p>
                                         </form>

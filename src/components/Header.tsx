@@ -46,6 +46,10 @@ export class Header extends React.Component <{}, {left: boolean}> {
                                 <Link to="/SecondComponent"> About </Link>
                             </Typography>
                             <hr/>
+                            <Typography variant="headline">
+                                <Link to="/Help"> Help </Link>
+                            </Typography>
+                            <hr/>
                         </div>
                     </Drawer>
                     <Typography variant="display2" color="inherit">
